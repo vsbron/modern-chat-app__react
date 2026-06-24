@@ -77,4 +77,4 @@ This repository is intended for portfolio/demo purposes. Permission is granted t
 
 ### Live version
 
-https://vsbron-react2024-modern-chat-app.netlify.app/
+https://vsbron-modern-chat-app.netlify.app/

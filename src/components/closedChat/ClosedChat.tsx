@@ -1,3 +1,4 @@
+import { SITE_NAME } from "../../utils/constants";
 import "./closedChat.css";
 
 function ClosedChat() {
@@ -5,9 +6,9 @@ function ClosedChat() {
     <>
       <div className="closed-chat">
         <div className="closed-chat__message">
-          <h2>Welcome to the Modern Chat App</h2>
+          <h2>Welcome to the {SITE_NAME}</h2>
           <p>
-            We&apos;re thrilled to have you here! The Modern Chat App is your
+            We&apos;re thrilled to have you here! The {SITE_NAME} is your
             go-to platform for connecting with friends, family, and colleagues.
             Whether you&apos;re catching up with old friends or meeting new
             ones, this app is designed to make your conversations seamless, fun,
@@ -26,7 +27,7 @@ function ClosedChat() {
           </p>
         </div>
         <div className="closed-chat__copyright">
-          <img src="/mca-logo.svg" alt="MCA Logo" title="Modern Chat App" />
+          <img src="/mca-logo.svg" alt="MCA Logo" title={SITE_NAME} />
           <span>
             Built by VSBroN as a portfolio project
             <br />

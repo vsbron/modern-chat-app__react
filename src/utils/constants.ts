@@ -1,3 +1,5 @@
+export const SITE_NAME = "Modern Chat App"
+
 export const COLORS = [
   { name: "violet", bg: "var(--color-scheme-violet)" },
   { name: "blue", bg: "var(--color-scheme-blue)" },
