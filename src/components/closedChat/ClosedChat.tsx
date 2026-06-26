@@ -8,8 +8,8 @@ function ClosedChat() {
         <div className="closed-chat__message">
           <h2>Welcome to the {SITE_NAME}</h2>
           <p>
-            We&apos;re thrilled to have you here! The {SITE_NAME} is your
-            go-to platform for connecting with friends, family, and colleagues.
+            We&apos;re thrilled to have you here! The {SITE_NAME} is your go-to
+            platform for connecting with friends, family, and colleagues.
             Whether you&apos;re catching up with old friends or meeting new
             ones, this app is designed to make your conversations seamless, fun,
             and secure.
@@ -33,12 +33,12 @@ function ClosedChat() {
             <br />
             This project is available on{" "}
             <a
-              href="https://github.com/vsbron/react2024-modern-chat-app"
+              href="https://github.com/vsbron/modern-chat-app__react"
               target="_blank"
             >
               GitHub
             </a>
-            <br />© 2024. All rights reserved
+            <br />©{new Date().getFullYear()}. All rights reserved
           </span>
         </div>
       </div>
