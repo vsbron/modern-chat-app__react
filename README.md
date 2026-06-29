@@ -52,7 +52,7 @@ This project started as a course-based chat app and was later fully rewritten an
 
 ### UX & Product Features
 
-- Settings menu with profile customization (avatar, username, password, description)
+- Settings menu with profile customization (avatar, username, password, description (cannot change email due to Firestore limitations))
 - Theme / color scheme selector
 - Add Users flow (search by username or email)
 - Prevents self-add and duplicate chats

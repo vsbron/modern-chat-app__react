@@ -86,7 +86,7 @@ function UpdateUser() {
     // Collecting all data into object
     const updatedData: UpdatedDataType = {
       username,
-      email,
+      // email,
       description,
       avatar: typeof avatar === "string" ? avatar : undefined,
     };

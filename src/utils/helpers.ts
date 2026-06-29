@@ -36,7 +36,7 @@ export const formatDate = (createdAt: CreatedAtType) => {
   } else {
     // Convert Firestore timestamp to Date
     const date = new Date(
-      createdAt.seconds * 1000 + createdAt.nanoseconds / 1000000
+      createdAt.seconds * 1000 + createdAt.nanoseconds / 1000000,
     );
     return format(date, "yyyy-MM-dd");
   }

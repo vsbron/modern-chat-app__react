@@ -19,8 +19,6 @@ import { FirebaseError } from "firebase/app";
 import {
   MAX_AVATAR_SIZE_BYTES,
   MAX_AVATAR_SIZE_MB,
-  MAX_FILE_SIZE_BYTES,
-  MAX_FILE_SIZE_MB,
 } from "../../utils/constants";
 
 function Login() {
@@ -147,8 +145,15 @@ function Login() {
       // Showing success message
       toast.success("Account created! You can log in now");
     } catch (e: unknown) {
-      toast.error("Couldn't create an account due to unknown error");
-      console.error(e instanceof Error ? e.message : e);
+      if (e instanceof FirebaseError) {
+        console.error(e.message);
+        if (e.code === "auth/email-already-in-use") {
+          toast.error("The email you entered is already in use");
+        }
+      } else {
+        toast.error("Couldn't create an account due to unknown error");
+        console.error(e instanceof Error ? e.message : e);
+      }
     } finally {
       // Disabling the loading state
       setLoading(false);
