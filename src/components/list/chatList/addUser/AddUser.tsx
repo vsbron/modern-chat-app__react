@@ -87,7 +87,7 @@ function AddUser({ setAddMode }: AddUserProps) {
       // Queries to search by username or email
       const usernameQuery = query(
         userRef,
-        where("username", "==", searchInput)
+        where("username", "==", searchInput),
       );
       const emailQuery = query(userRef, where("email", "==", searchInput));
 
@@ -97,7 +97,15 @@ function AddUser({ setAddMode }: AddUserProps) {
 
       // If a user is found by username or email, set the state with user data
       if (!usernameSnapshot.empty) {
-        setSearchedUser(usernameSnapshot.docs[0].data() as User);
+        // Guard clause, IF SOMEHOW, there's two users with same Username
+        if (usernameSnapshot.docs.length > 1) {
+          toast.warn(
+            "Multiple users found with this username. Please search by email instead.",
+          );
+          setSearchedUser(null);
+        } else {
+          setSearchedUser(usernameSnapshot.docs[0].data() as User);
+        }
       } else if (!emailSnapshot.empty) {
         setSearchedUser(emailSnapshot.docs[0].data() as User);
       } else {
@@ -202,7 +210,7 @@ function AddUser({ setAddMode }: AddUserProps) {
         )
       )}
     </div>,
-    document.body
+    document.body,
   );
 }
 
