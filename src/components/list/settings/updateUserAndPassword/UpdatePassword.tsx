@@ -44,28 +44,28 @@ function UpdatePassword() {
     if (password !== passwordConfirm)
       return toast.warn("Passwords do not match");
 
-    const credential = EmailAuthProvider.credential(
-      user.email as string,
-      currentPassword
-    );
-    await reauthenticateWithCredential(user, credential);
+    try {
+      // Enabling the updating state
+      setUpdating(true);
 
-    // Enabling the updating state
-    setUpdating(true);
+      // Update the current user's password
+      const credential = EmailAuthProvider.credential(
+        user.email as string,
+        currentPassword,
+      );
+      await reauthenticateWithCredential(user, credential);
 
-    // Update the current user's password
-    updatePassword(user, password)
-      .then(() => {
-        // Showing success message
-        toast.success("Password is updated successfully");
-      })
-      .catch((e: unknown) => {
-        toast.error("Couldn't update the password due to unknown error");
-        console.error(e instanceof Error ? e.message : e);
-      });
-
-    // Disabling the updating state
-    setUpdating(false);
+      await updatePassword(user, password);
+      toast.success("Password is updated successfully");
+    } catch (e: unknown) {
+      toast.error(
+        "Couldn't update the password. Please check your current password.",
+      );
+      console.error(e instanceof Error ? e.message : e);
+    } finally {
+      // Disabling the updating state
+      setUpdating(false);
+    }
   };
 
   // Returned JSX
