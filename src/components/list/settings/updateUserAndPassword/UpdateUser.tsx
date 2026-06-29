@@ -12,6 +12,10 @@ import {
 
 import Avatar from "../../../../ui/avatar/Avatar";
 import Button from "../../../../ui/button/Button";
+import {
+  MAX_AVATAR_SIZE_BYTES,
+  MAX_AVATAR_SIZE_MB,
+} from "../../../../utils/constants";
 
 function UpdateUser() {
   // Getting the current user from the store
@@ -119,6 +123,12 @@ function UpdateUser() {
   // Image upload handler
   const handleAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (file.size > MAX_AVATAR_SIZE_BYTES) {
+        toast.warn(`File is too large. Max size is ${MAX_AVATAR_SIZE_MB}MB`);
+        e.target.value = ""; // reset input
+        return;
+      }
       setAvatar({
         file: e.target.files[0],
         src: URL.createObjectURL(e.target.files[0]),

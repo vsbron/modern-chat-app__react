@@ -55,7 +55,7 @@ This project started as a course-based chat app and was later fully rewritten an
 - Settings menu with profile customization (avatar, username, password, description)
 - Theme / color scheme selector
 - Add Users flow (search by username or email)
-  - Prevents self-add and duplicate chats
+- Prevents self-add and duplicate chats
 - Pinned chats for quick access
 - Quick close chat action ("X" button)
 - Improved modal behavior (outside click + Esc to close)
@@ -64,7 +64,7 @@ This project started as a course-based chat app and was later fully rewritten an
 ### Messaging & Attachments
 
 - Send text, emojis, and images
-- File/image attachment preview + remove before sending
+- File/image attachment preview + remove before sending (size is limited to 10MB)
 - Attachments appear in chat with filename + download option
 - Shared files/images displayed in the Details panel with per-item download buttons
 - Block user support (prevents message exchange while keeping avatars/names visible)

@@ -16,6 +16,10 @@ import Button from "../../../ui/button/Button";
 import LoaderSmall from "../../../ui/loader/LoaderSmall";
 import "./chat.css";
 import { toast } from "react-toastify";
+import {
+  MAX_FILE_SIZE_BYTES,
+  MAX_FILE_SIZE_MB,
+} from "../../../utils/constants";
 
 // Initial state for an empty file
 const fileInitialState = {
@@ -114,7 +118,7 @@ function Chat({ chat, setShowDetails, isLoading }: ChatProps) {
           const userChatsData = userChatsSnapshot.data();
 
           const chatIndex = userChatsData.chats.findIndex(
-            (c: { chatId: string }) => c.chatId === chatId
+            (c: { chatId: string }) => c.chatId === chatId,
           );
 
           userChatsData.chats[chatIndex].lastMessage = inputText;
@@ -144,6 +148,11 @@ function Chat({ chat, setShowDetails, isLoading }: ChatProps) {
   const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]; // Optional chaining in case files is null
     if (file) {
+      if (file.size > MAX_FILE_SIZE_BYTES) {
+        toast.warn(`File is too large. Max size is ${MAX_FILE_SIZE_MB}MB`);
+        e.target.value = "";
+        return;
+      }
       setFile({
         file,
         url: URL.createObjectURL(file),
