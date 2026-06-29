@@ -165,7 +165,12 @@ function AddUser({ setAddMode }: AddUserProps) {
 
   // Returned JSX (using create portal for exiting the relative parent)
   return createPortal(
-    <div className="add-user">
+    <div
+      className="add-user"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Create a chat with new user"
+    >
       {/* Input field for searching users */}
       <form className="add-user__form" onSubmit={handleSearch}>
         <input type="text" placeholder="Username or email" name="username" />

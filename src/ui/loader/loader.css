@@ -1,6 +1,7 @@
 .loader {
   width: 5rem;
   height: 5rem;
+  margin: 5rem auto;
   padding: 1rem;
   border-radius: var(--border-radius-round);
   background: var(--color-white);
